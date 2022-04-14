@@ -3,53 +3,20 @@ using System;
 using AareonTechnicalTest;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AareonTechnicalTest.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20220413153952_AddAudit")]
+    partial class AddAudit
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "5.0.11");
-
-            modelBuilder.Entity("AareonTechnicalTest.Models.Audit", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("AffectedColumns")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("DateTime")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("NewValues")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("OldValues")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("PrimaryKey")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("TableName")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Type")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("AuditLogs");
-                });
 
             modelBuilder.Entity("AareonTechnicalTest.Models.Note", b =>
                 {
@@ -166,7 +133,6 @@ namespace AareonTechnicalTest.Migrations
 
                     b.Navigation("Ticket");
                 });
-
 #pragma warning restore 612, 618
         }
     }

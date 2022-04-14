@@ -4,18 +4,21 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AareonTechnicalTest.Models
 {
-    public class Ticket:AuditEntity
+    public class Note : AuditEntity
     {
         [Key]
         public int Id { get; }
 
-        public string Content { get; set; }
+        public string NoteText { get; set; }
 
+        public int TicketId { get; set; }
+        public Ticket Ticket { get; set; }
         public int PersonId { get; set; }
+        public Person Person { get; set; }
     }
 
 
-    public class TicketLog : AuditEntity
+    public class NoteLog : AuditEntity
     {
         [Key, Column(Order = 1)]
         public int AuditRowId { get; set; }
@@ -23,9 +26,12 @@ namespace AareonTechnicalTest.Models
         public string AuditSqlCommand { get; set; }
         public int Id { get; }
 
-        public string Content { get; set; }
+        public string NoteText { get; set; }
 
+        public int TicketId { get; set; }
+        public Ticket Ticket { get; set; }
         public int PersonId { get; set; }
+        public Person Person { get; set; }
     }
 
 }

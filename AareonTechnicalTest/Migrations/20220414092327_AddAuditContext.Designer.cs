@@ -3,14 +3,16 @@ using System;
 using AareonTechnicalTest;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AareonTechnicalTest.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20220414092327_AddAuditContext")]
+    partial class AddAuditContext
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -87,6 +89,48 @@ namespace AareonTechnicalTest.Migrations
                     b.ToTable("Notes");
                 });
 
+            modelBuilder.Entity("AareonTechnicalTest.Models.NoteLog", b =>
+                {
+                    b.Property<int>("AuditRowId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("AuditCreatedOn")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("AuditSqlCommand")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("NoteText")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("PersonId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("TicketId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("AuditRowId");
+
+                    b.HasIndex("PersonId");
+
+                    b.HasIndex("TicketId");
+
+                    b.ToTable("NoteLogs");
+                });
+
             modelBuilder.Entity("AareonTechnicalTest.Models.Person", b =>
                 {
                     b.Property<int>("Id")
@@ -119,6 +163,44 @@ namespace AareonTechnicalTest.Migrations
                     b.ToTable("Persons");
                 });
 
+            modelBuilder.Entity("AareonTechnicalTest.Models.PersonLog", b =>
+                {
+                    b.Property<int>("AuditRowId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("AuditCreatedOn")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("AuditSqlCommand")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Forename")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("IsAdmin")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Surname")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("AuditRowId");
+
+                    b.ToTable("PersonLogs");
+                });
+
             modelBuilder.Entity("AareonTechnicalTest.Models.Ticket", b =>
                 {
                     b.Property<int>("Id")
@@ -148,6 +230,41 @@ namespace AareonTechnicalTest.Migrations
                     b.ToTable("Tickets");
                 });
 
+            modelBuilder.Entity("AareonTechnicalTest.Models.TicketLog", b =>
+                {
+                    b.Property<int>("AuditRowId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("AuditCreatedOn")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("AuditSqlCommand")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Content")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("PersonId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("AuditRowId");
+
+                    b.ToTable("TicketLogs");
+                });
+
             modelBuilder.Entity("AareonTechnicalTest.Models.Note", b =>
                 {
                     b.HasOne("AareonTechnicalTest.Models.Person", "Person")
@@ -167,6 +284,24 @@ namespace AareonTechnicalTest.Migrations
                     b.Navigation("Ticket");
                 });
 
+            modelBuilder.Entity("AareonTechnicalTest.Models.NoteLog", b =>
+                {
+                    b.HasOne("AareonTechnicalTest.Models.Person", "Person")
+                        .WithMany()
+                        .HasForeignKey("PersonId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("AareonTechnicalTest.Models.Ticket", "Ticket")
+                        .WithMany()
+                        .HasForeignKey("TicketId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Person");
+
+                    b.Navigation("Ticket");
+                });
 #pragma warning restore 612, 618
         }
     }
