@@ -12,6 +12,7 @@ namespace AareonTechnicalTest.Services
     public interface INoteService
     {
         Task<Note> GetById(int id);
+        Task<IEnumerable<Note>> GetAll();
         Task<IEnumerable<Note>> GetByTicketId(int id);
         Task AddNote(Note model);
         Task UpdateNote(int id, Note model);
@@ -22,20 +23,21 @@ namespace AareonTechnicalTest.Services
     public class NoteService : INoteService
     {
 
-        private readonly ILogger<NoteService> _logger;
         private readonly IUnitOfWork _unitOfWork;
 
-        public NoteService(
-            ILogger<NoteService> logger,
-            IUnitOfWork unitOfWork)
+        public NoteService(IUnitOfWork unitOfWork)
         {
-            _logger = logger;
             _unitOfWork = unitOfWork;
         }
 
         public async Task<Note> GetById(int id)
         {
             return await _unitOfWork.Notes.GetById(id);
+        }
+
+        public async Task<IEnumerable<Note>> GetAll()
+        {
+            return await _unitOfWork.Notes.All();
         }
 
         public async Task<IEnumerable<Note>> GetByTicketId(int ticketId)

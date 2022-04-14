@@ -32,7 +32,13 @@ namespace AareonTechnicalTest.Controllers
             _mapper = mapper;
         }
 
-        
+        [HttpGet]
+        public async Task<IActionResult> Get()
+        {
+            var noteEntities = await _noteService.GetAll();
+            var notes = noteEntities.Select(x => x.ToNoteViewModel(_mapper));
+            return Ok(notes);
+        }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "CHr2ULryy0hfudkNgr8PDlsxDfCvrinjEwJHMHooUCtO6Xwevgu3uOVwcmUZxhlZJ7/rjlL8FxcacTAjyjfb4g==",
+  "dgSpecHash": "yF++ckSuM7e1sj8VjY6ax6FdS0oamfIkldic6ykP9Dg2Hcr9QsPG14y4vLeVqPbpqeF0Twz4W18+Z1KUO7CdYA==",
   "success": true,
-  "projectFilePath": "D:\\code studies\\AareonTechnicalTest (2022)\\AareonTechnicalTest\\AareonTechnicalTest\\AareonTechnicalTest.csproj",
+  "projectFilePath": "D:\\code studies\\mainbranch\\AareonTechnicalTest\\AareonTechnicalTest\\AareonTechnicalTest.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\alkan\\.nuget\\packages\\automapper\\11.0.0\\automapper.11.0.0.nupkg.sha512",
     "C:\\Users\\alkan\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",

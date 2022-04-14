@@ -21,7 +21,7 @@ namespace AareonTechnicalTest.DAL
         private ILogger _logger;
         private readonly IMapper _mapper;
 
-        public TicketRepository(ApplicationContext context, ILogger logger, IMapper mapper, IHttpContextAccessor _accessor) : base(context, _accessor, logger)
+        public TicketRepository(ApplicationContext context, IMapper mapper, IHttpContextAccessor _accessor) : base(context, _accessor)
         {
             _mapper = mapper;
         }

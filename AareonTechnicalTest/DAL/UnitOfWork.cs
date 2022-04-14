@@ -21,7 +21,6 @@ namespace AareonTechnicalTest.DAL
     public class UnitOfWork : IUnitOfWork, IDisposable
     {
         private readonly ApplicationContext _context;
-        private readonly ILogger _logger;
         private readonly IMapper _mapper;
         protected IHttpContextAccessor _accessor;
 
@@ -29,16 +28,15 @@ namespace AareonTechnicalTest.DAL
         public ITicketRepository Tickets { get; private set; }
         public INoteRepository Notes { get; private set; }
 
-        public UnitOfWork(ApplicationContext context, ILoggerFactory loggerFactory, IMapper mapper, IHttpContextAccessor accessor)
+        public UnitOfWork(ApplicationContext context, IMapper mapper, IHttpContextAccessor accessor)
         {
             _context = context;
             _mapper = mapper;
-            _logger = loggerFactory.CreateLogger("logs");
             _accessor = accessor;
 
-            People = new PersonRepository(context, _logger, _mapper, _accessor);
-            Tickets = new TicketRepository(context, _logger, _mapper, _accessor);
-            Notes = new NoteRepository(context, _logger, _mapper, _accessor);
+            People = new PersonRepository(context, _mapper, _accessor);
+            Tickets = new TicketRepository(context, _mapper, _accessor);
+            Notes = new NoteRepository(context, _mapper, _accessor);
         }
 
         public async Task SaveAsync()

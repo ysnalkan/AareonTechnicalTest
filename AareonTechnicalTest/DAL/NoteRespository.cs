@@ -18,10 +18,10 @@ namespace AareonTechnicalTest.DAL
 
     public class NoteRepository : GenericRepository<Note>, INoteRepository
     {
-        private ILogger _logger;
+
         private readonly IMapper _mapper;
 
-        public NoteRepository(ApplicationContext context, ILogger logger, IMapper mapper, IHttpContextAccessor _accessor) : base(context, _accessor, logger)
+        public NoteRepository(ApplicationContext context, IMapper mapper, IHttpContextAccessor _accessor) : base(context, _accessor)
         {
             _mapper = mapper;
         }

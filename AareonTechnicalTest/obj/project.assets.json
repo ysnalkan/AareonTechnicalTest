@@ -1470,11 +1470,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\code studies\\AareonTechnicalTest (2022)\\AareonTechnicalTest\\AareonTechnicalTest\\AareonTechnicalTest.csproj",
+      "projectUniqueName": "D:\\code studies\\mainbranch\\AareonTechnicalTest\\AareonTechnicalTest\\AareonTechnicalTest.csproj",
       "projectName": "AareonTechnicalTest",
-      "projectPath": "D:\\code studies\\AareonTechnicalTest (2022)\\AareonTechnicalTest\\AareonTechnicalTest\\AareonTechnicalTest.csproj",
+      "projectPath": "D:\\code studies\\mainbranch\\AareonTechnicalTest\\AareonTechnicalTest\\AareonTechnicalTest.csproj",
       "packagesPath": "C:\\Users\\alkan\\.nuget\\packages\\",
-      "outputPath": "D:\\code studies\\AareonTechnicalTest (2022)\\AareonTechnicalTest\\AareonTechnicalTest\\obj\\",
+      "outputPath": "D:\\code studies\\mainbranch\\AareonTechnicalTest\\AareonTechnicalTest\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

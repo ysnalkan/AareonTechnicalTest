@@ -12,6 +12,7 @@ namespace AareonTechnicalTest.Services
     public interface ITicketService
     {
         Task<Ticket> GetById(int id);
+        Task<IEnumerable<Ticket>> GetAll();
         Task AddTicket(Ticket model);
         Task UpdateTicket(int id,Ticket model);
         Task DeleteTicket(int id);
@@ -20,21 +21,21 @@ namespace AareonTechnicalTest.Services
 
     public class TicketService : ITicketService
     {
-
-        private readonly ILogger<TicketService> _logger;
         private readonly IUnitOfWork _unitOfWork;
 
-        public TicketService(
-            ILogger<TicketService> logger,
-            IUnitOfWork unitOfWork)
+        public TicketService(IUnitOfWork unitOfWork)
         {
-            _logger = logger;
             _unitOfWork = unitOfWork;
         }
 
         public async Task<Ticket> GetById(int id)
         {
             return await _unitOfWork.Tickets.GetById(id);
+        }
+
+        public async Task<IEnumerable<Ticket>> GetAll()
+        {
+            return await _unitOfWork.Tickets.All();
         }
 
         public async Task AddTicket(Ticket model)

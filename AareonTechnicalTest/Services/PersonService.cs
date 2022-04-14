@@ -21,14 +21,10 @@ namespace AareonTechnicalTest.Services
     public class PersonService : IPersonService
     {
 
-        private readonly ILogger<PersonService> _logger;
         private readonly IUnitOfWork _unitOfWork;
 
-        public PersonService(
-            ILogger<PersonService> logger,
-            IUnitOfWork unitOfWork)
+        public PersonService(IUnitOfWork unitOfWork)
         {
-            _logger = logger;
             _unitOfWork = unitOfWork;
         }
 

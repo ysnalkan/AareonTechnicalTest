@@ -18,10 +18,8 @@ namespace AareonTechnicalTest.DAL
 
     public class PersonRepository : GenericRepository<Person>, IPersonRepository
     {
-        private readonly ILogger _logger;
         private readonly IMapper _mapper;
-        public PersonRepository(ApplicationContext context, ILogger logger, IMapper mapper, IHttpContextAccessor _accessor) : base(context, _accessor, logger) {
-            _logger = logger;
+        public PersonRepository(ApplicationContext context,IMapper mapper, IHttpContextAccessor _accessor) : base(context, _accessor) {
             _mapper = mapper;
         }
 

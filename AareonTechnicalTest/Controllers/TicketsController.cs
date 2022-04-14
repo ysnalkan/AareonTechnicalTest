@@ -30,11 +30,13 @@ namespace AareonTechnicalTest.Controllers
             _mapper = mapper;
         }
 
-        // GET: api/<TicketsController>
+
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<IActionResult> Get()
         {
-            return new string[] { "value1", "value2" };
+            var ticketEntities= await _ticketService.GetAll();
+            var tickets = ticketEntities.Select(x => x.ToTicketViewModel(_mapper));
+            return Ok(tickets);
         }
 
         // GET api/<TicketsController>/5

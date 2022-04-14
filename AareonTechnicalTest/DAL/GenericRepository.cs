@@ -26,7 +26,7 @@ namespace AareonTechnicalTest.DAL
         protected IHttpContextAccessor _accessor;
         internal DbSet<T> dbSet;
 
-        public GenericRepository(ApplicationContext context,IHttpContextAccessor accessor ,ILogger logger)
+        public GenericRepository(ApplicationContext context,IHttpContextAccessor accessor)
         {
             _accessor = accessor;
             this.context = context;
@@ -55,9 +55,9 @@ namespace AareonTechnicalTest.DAL
             throw new NotImplementedException();
         }
 
-        public virtual Task<IEnumerable<T>> All()
+        public async virtual Task<IEnumerable<T>> All()
         {
-            throw new NotImplementedException();
+            return await dbSet.ToListAsync();
         }
 
         public async Task<IEnumerable<T>> Find(Expression<Func<T, bool>> predicate)
